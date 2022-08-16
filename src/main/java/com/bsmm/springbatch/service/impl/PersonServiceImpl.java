@@ -7,6 +7,7 @@ import com.bsmm.springbatch.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.webjars.NotFoundException;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person getById(long id) {
-        return null;
+        return toDto(getEntity(id));
     }
 
     @Override
@@ -28,20 +29,36 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person create(Person data) {
-        return null;
+        PersonEntity person = personRepository.save(toEntity(data));
+        return toDto(person);
     }
 
     @Override
     public Person update(long id, Person data) {
-        return null;
+        PersonEntity person = getEntity(id);
+        person.setFirstName(data.getFirstName());
+        person.setLastName(data.getLastName());
+        person.setPhone(data.getPhone());
+        return toDto(personRepository.save(person));
     }
 
     @Override
     public long deleteById(long id) {
-        return 0;
+        getEntity(id);
+        personRepository.deleteById(id);
+        return id;
+    }
+
+    private PersonEntity getEntity(long id) {
+        return personRepository.findById(id).orElseThrow(() -> new NotFoundException("The person with ID %d not exists."));
     }
 
     private Person toDto(PersonEntity entity) {
         return modelMapper.map(entity, Person.class);
     }
+
+    private PersonEntity toEntity(Person dto) {
+        return modelMapper.map(dto, PersonEntity.class);
+    }
+
 }

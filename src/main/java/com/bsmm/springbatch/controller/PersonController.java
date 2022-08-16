@@ -4,12 +4,11 @@ import com.bsmm.springbatch.domain.Person;
 import com.bsmm.springbatch.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -29,5 +28,23 @@ public class PersonController {
     ResponseEntity<Person> getById(@PathVariable long id) {
         log.info("Get person by id.");
         return ResponseEntity.ok().body(personService.getById(id));
+    }
+
+    @PostMapping
+    ResponseEntity<Person> create(@RequestBody @Valid Person data) {
+        log.info("Create person.");
+        return new ResponseEntity<>(personService.create(data), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    ResponseEntity<Person> update(@PathVariable long id, @RequestBody @Valid Person data) {
+        log.info("Update person.");
+        return ResponseEntity.ok().body(personService.update(id, data));
+    }
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<Long> deleteById(@PathVariable long id) {
+        log.info("Get person by id.");
+        return ResponseEntity.ok().body(personService.deleteById(id));
     }
 }
