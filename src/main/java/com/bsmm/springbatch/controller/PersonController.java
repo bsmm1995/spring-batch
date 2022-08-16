@@ -1,6 +1,6 @@
 package com.bsmm.springbatch.controller;
 
-import com.bsmm.springbatch.domain.Person;
+import com.bsmm.springbatch.domain.PersonDto;
 import com.bsmm.springbatch.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,25 +19,25 @@ public class PersonController {
     private final PersonService personService;
 
     @GetMapping
-    ResponseEntity<List<Person>> getAll() {
+    ResponseEntity<List<PersonDto>> getAll() {
         log.info("Get all persons.");
         return ResponseEntity.ok().body(personService.getAll());
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<Person> getById(@PathVariable long id) {
+    ResponseEntity<PersonDto> getById(@PathVariable long id) {
         log.info("Get person by id.");
         return ResponseEntity.ok().body(personService.getById(id));
     }
 
     @PostMapping
-    ResponseEntity<Person> create(@RequestBody @Valid Person data) {
+    ResponseEntity<PersonDto> create(@RequestBody @Valid PersonDto data) {
         log.info("Create person.");
         return new ResponseEntity<>(personService.create(data), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    ResponseEntity<Person> update(@PathVariable long id, @RequestBody @Valid Person data) {
+    ResponseEntity<PersonDto> update(@PathVariable long id, @RequestBody @Valid PersonDto data) {
         log.info("Update person.");
         return ResponseEntity.ok().body(personService.update(id, data));
     }

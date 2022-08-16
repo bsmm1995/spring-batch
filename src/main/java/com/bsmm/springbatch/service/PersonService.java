@@ -1,17 +1,17 @@
 package com.bsmm.springbatch.service;
 
-import com.bsmm.springbatch.domain.Person;
+import com.bsmm.springbatch.domain.PersonDto;
 
 import java.util.List;
 
 public interface PersonService {
-    Person getById(long id);
+    PersonDto getById(long id);
 
-    List<Person> getAll();
+    List<PersonDto> getAll();
 
-    Person create(Person data);
+    PersonDto create(PersonDto data);
 
-    Person update(long id, Person data);
+    PersonDto update(long id, PersonDto data);
 
     long deleteById(long id);
 }

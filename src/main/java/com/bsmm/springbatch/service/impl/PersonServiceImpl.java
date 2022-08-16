@@ -1,6 +1,6 @@
 package com.bsmm.springbatch.service.impl;
 
-import com.bsmm.springbatch.domain.Person;
+import com.bsmm.springbatch.domain.PersonDto;
 import com.bsmm.springbatch.domain.PersonEntity;
 import com.bsmm.springbatch.repository.PersonRepository;
 import com.bsmm.springbatch.service.PersonService;
@@ -18,25 +18,25 @@ public class PersonServiceImpl implements PersonService {
     private final ModelMapper modelMapper;
 
     @Override
-    public Person getById(long id) {
+    public PersonDto getById(long id) {
         return toDto(getEntity(id));
     }
 
     @Override
-    public List<Person> getAll() {
+    public List<PersonDto> getAll() {
         return personRepository.findAll().stream().map(this::toDto).toList();
     }
 
     @Override
-    public Person create(Person data) {
+    public PersonDto create(PersonDto data) {
         PersonEntity person = personRepository.save(toEntity(data));
         return toDto(person);
     }
 
     @Override
-    public Person update(long id, Person data) {
+    public PersonDto update(long id, PersonDto data) {
         PersonEntity person = getEntity(id);
-        person.setFirstName(data.getFirstName());
+        person.setName(data.getName());
         person.setLastName(data.getLastName());
         person.setPhone(data.getPhone());
         return toDto(personRepository.save(person));
@@ -53,11 +53,11 @@ public class PersonServiceImpl implements PersonService {
         return personRepository.findById(id).orElseThrow(() -> new NotFoundException("The person with ID %d not exists."));
     }
 
-    private Person toDto(PersonEntity entity) {
-        return modelMapper.map(entity, Person.class);
+    private PersonDto toDto(PersonEntity entity) {
+        return modelMapper.map(entity, PersonDto.class);
     }
 
-    private PersonEntity toEntity(Person dto) {
+    private PersonEntity toEntity(PersonDto dto) {
         return modelMapper.map(dto, PersonEntity.class);
     }
 

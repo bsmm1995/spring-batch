@@ -17,18 +17,18 @@ public class PersonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String firstName;
+    private String name;
     private String lastName;
     private String phone;
 
-    public PersonEntity(String firstName, String lastName, String phone) {
-        this.firstName = firstName;
+    public PersonEntity(String name, String lastName, String phone) {
+        this.name = name;
         this.lastName = lastName;
         this.phone = phone;
     }
 
     @Override
     public String toString() {
-        return "Person [id= " + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone + "]";
+        return "PersonDto [id= " + id + ", firstName=" + name + ", lastName=" + lastName + ", phone=" + phone + "]";
     }
 }
