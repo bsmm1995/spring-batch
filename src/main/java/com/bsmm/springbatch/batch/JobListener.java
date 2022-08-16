@@ -1,6 +1,5 @@
 package com.bsmm.springbatch.batch;
 
-import com.bsmm.springbatch.domain.Person;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,10 +20,10 @@ public class JobListener extends JobExecutionListenerSupport {
         if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
             LOG.info("FINALIZÓ EL JOB!! Verifica los resultados:");
 
-            jdbcTemplate
+            /*jdbcTemplate
                     .query("SELECT first_name, last_name, phone FROM person",
                             (rs, row) -> new Person(rs.getString(1), rs.getString(2), rs.getString(3)))
-                    .forEach(person -> LOG.info("Registro < " + person + " >"));
+                    .forEach(person -> LOG.info("Registro < " + person + " >"));*/
         }
     }
 

@@ -1,13 +1,11 @@
 package com.bsmm.springbatch.batch;
 
 import com.bsmm.springbatch.domain.Person;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemProcessor;
 
+@Slf4j
 public class PersonaItemProcessor implements ItemProcessor<Person, Person> {
-    private static final Logger LOG = LoggerFactory.getLogger(PersonaItemProcessor.class);
-
     @Override
     public Person process(Person item) {
         String firstName = item.getFirstName().toUpperCase();
@@ -16,7 +14,7 @@ public class PersonaItemProcessor implements ItemProcessor<Person, Person> {
 
         Person person = new Person(firstName, lastName, phone);
 
-        LOG.info("Convirtiendo (" + item + ") a (" + person + ")");
+        log.info("Convirtiendo (" + item + ") a (" + person + ")");
         return person;
     }
 }
