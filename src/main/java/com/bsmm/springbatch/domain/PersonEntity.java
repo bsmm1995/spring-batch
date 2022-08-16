@@ -20,4 +20,15 @@ public class PersonEntity {
     private String firstName;
     private String lastName;
     private String phone;
+
+    public PersonEntity(String firstName, String lastName, String phone) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "Person [id= " + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phone=" + phone + "]";
+    }
 }
