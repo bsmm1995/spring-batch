@@ -64,7 +64,7 @@ public class JobBatchConfiguration {
         return new CreditCardIItemWriterListener();
     }
 
-    @Bean
+    @Bean(name = "job1")
     public Job job(Step step, CreditCardJobExecutionListener jobExecutionListener) {
         return jobBuilderFactory.get("job1")
                 .listener(jobExecutionListener)
