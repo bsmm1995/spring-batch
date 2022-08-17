@@ -1,7 +1,7 @@
 package com.bsmm.springbatch.controller;
 
-import com.bsmm.springbatch.domain.PersonDto;
-import com.bsmm.springbatch.service.PersonService;
+import com.bsmm.springbatch.domain.CreditCardDto;
+import com.bsmm.springbatch.service.CreditCardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,35 +16,35 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class PersonController {
-    private final PersonService personService;
+    private final CreditCardService creditCardService;
 
     @GetMapping
-    ResponseEntity<List<PersonDto>> getAll() {
+    ResponseEntity<List<CreditCardDto>> getAll() {
         log.info("Get all persons.");
-        return ResponseEntity.ok().body(personService.getAll());
+        return ResponseEntity.ok().body(creditCardService.getAll());
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<PersonDto> getById(@PathVariable long id) {
+    ResponseEntity<CreditCardDto> getById(@PathVariable long id) {
         log.info("Get person by id.");
-        return ResponseEntity.ok().body(personService.getById(id));
+        return ResponseEntity.ok().body(creditCardService.getById(id));
     }
 
     @PostMapping
-    ResponseEntity<PersonDto> create(@RequestBody @Valid PersonDto data) {
+    ResponseEntity<CreditCardDto> create(@RequestBody @Valid CreditCardDto data) {
         log.info("Create person.");
-        return new ResponseEntity<>(personService.create(data), HttpStatus.CREATED);
+        return new ResponseEntity<>(creditCardService.create(data), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    ResponseEntity<PersonDto> update(@PathVariable long id, @RequestBody @Valid PersonDto data) {
+    ResponseEntity<CreditCardDto> update(@PathVariable long id, @RequestBody @Valid CreditCardDto data) {
         log.info("Update person.");
-        return ResponseEntity.ok().body(personService.update(id, data));
+        return ResponseEntity.ok().body(creditCardService.update(id, data));
     }
 
     @DeleteMapping("/{id}")
     ResponseEntity<Long> deleteById(@PathVariable long id) {
         log.info("Get person by id.");
-        return ResponseEntity.ok().body(personService.deleteById(id));
+        return ResponseEntity.ok().body(creditCardService.deleteById(id));
     }
 }
