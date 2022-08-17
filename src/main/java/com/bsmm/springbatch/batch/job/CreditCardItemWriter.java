@@ -13,7 +13,7 @@ public class CreditCardItemWriter implements ItemWriter<CreditCardRiskEntity> {
     private CreditCardRiskRepository repository;
 
     @Override
-    public void write(List<? extends CreditCardRiskEntity> list) throws Exception {
+    public void write(List<? extends CreditCardRiskEntity> list) {
         repository.saveAll(list);
     }
 }

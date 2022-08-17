@@ -73,7 +73,7 @@ public class JobBatchConfiguration {
                 .build();
     }
 
-    @Bean
+    @Bean(name = "step1")
     public Step step(CreditCardItemReader reader,
                      CreditCardItemWriter writer,
                      CreditCardItemProcessor processor,

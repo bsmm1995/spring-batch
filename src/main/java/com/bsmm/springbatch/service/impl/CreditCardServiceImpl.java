@@ -1,7 +1,7 @@
 package com.bsmm.springbatch.service.impl;
 
-import com.bsmm.springbatch.domain.entities.CreditCardEntity;
 import com.bsmm.springbatch.domain.dto.CreditCardDto;
+import com.bsmm.springbatch.domain.entities.CreditCardEntity;
 import com.bsmm.springbatch.repository.CreditCardRepository;
 import com.bsmm.springbatch.service.CreditCardService;
 import lombok.RequiredArgsConstructor;
@@ -47,7 +47,7 @@ public class CreditCardServiceImpl implements CreditCardService {
     }
 
     private CreditCardEntity getEntity(long id) {
-        return creditCardRepository.findById(id).orElseThrow(() -> new NotFoundException("The person with ID %d not exists."));
+        return creditCardRepository.findById(id).orElseThrow(() -> new NotFoundException("The record with ID %d not exists."));
     }
 
     private CreditCardDto toDto(CreditCardEntity entity) {
