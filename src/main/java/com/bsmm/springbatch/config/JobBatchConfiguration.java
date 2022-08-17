@@ -9,6 +9,7 @@ import com.bsmm.springbatch.batch.listener.CreditCardItemProcessListener;
 import com.bsmm.springbatch.batch.listener.CreditCardJobExecutionListener;
 import com.bsmm.springbatch.domain.entities.CreditCardEntity;
 import com.bsmm.springbatch.domain.entities.CreditCardRiskEntity;
+import com.bsmm.springbatch.util.Constants;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -82,7 +83,7 @@ public class JobBatchConfiguration {
                      CreditCardIItemWriterListener writerListener) {
 
         return stepBuilderFactory.get("step1")
-                .<CreditCardEntity, CreditCardRiskEntity>chunk(5)
+                .<CreditCardEntity, CreditCardRiskEntity>chunk(Constants.BLOCK_SIZE)
                 .reader(reader)
                 .processor(processor)
                 .writer(writer)

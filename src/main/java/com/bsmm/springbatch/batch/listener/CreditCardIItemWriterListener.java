@@ -16,9 +16,7 @@ public class CreditCardIItemWriterListener implements ItemWriteListener<CreditCa
 
     @Override
     public void afterWrite(List<? extends CreditCardRiskEntity> list) {
-        for (CreditCardRiskEntity creditCardRisk : list) {
-            log.info("afterWrite :" + creditCardRisk.toString());
-        }
+        log.info("afterWrite: " + list.size() + " records were written...");
     }
 
     @Override
