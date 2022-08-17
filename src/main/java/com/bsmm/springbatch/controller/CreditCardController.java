@@ -1,6 +1,6 @@
 package com.bsmm.springbatch.controller;
 
-import com.bsmm.springbatch.domain.CreditCardDto;
+import com.bsmm.springbatch.domain.dto.CreditCardDto;
 import com.bsmm.springbatch.service.CreditCardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,10 +12,10 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/persons")
+@RequestMapping(value = "/credit-cards")
 @RequiredArgsConstructor
 @Slf4j
-public class PersonController {
+public class CreditCardController {
     private final CreditCardService creditCardService;
 
     @GetMapping

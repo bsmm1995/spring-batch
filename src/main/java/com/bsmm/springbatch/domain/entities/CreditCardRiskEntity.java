@@ -1,4 +1,4 @@
-package com.bsmm.springbatch.domain;
+package com.bsmm.springbatch.domain.entities;
 
 import lombok.Data;
 
@@ -7,11 +7,7 @@ import java.util.Date;
 
 @Entity
 @Data
-public class CreditCardRisk {
-    public static final int HIGH = 3;
-    public static final int LOW = 2;
-    public static final int NORMAL = 1;
-
+public class CreditCardRiskEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,12 +15,12 @@ public class CreditCardRisk {
     private int risk;
 
     @OneToOne(optional = false)
-    private CreditCard creditCard;
+    private CreditCardEntity creditCard;
 
-    public CreditCardRisk() {
+    public CreditCardRiskEntity() {
     }
 
-    public CreditCardRisk(CreditCard creditCard, Date date, int risk) {
+    public CreditCardRiskEntity(CreditCardEntity creditCard, Date date, int risk) {
         this.creditCard = creditCard;
         this.date = date;
         this.risk = risk;
@@ -32,7 +28,7 @@ public class CreditCardRisk {
 
     @Override
     public String toString() {
-        return "CreditCardRisk{" +
+        return "CreditCardRiskEntity{" +
                 "id=" + id +
                 ", date=" + date +
                 ", risk=" + risk +

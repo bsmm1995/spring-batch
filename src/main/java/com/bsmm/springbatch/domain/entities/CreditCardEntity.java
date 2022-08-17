@@ -1,4 +1,4 @@
-package com.bsmm.springbatch.domain;
+package com.bsmm.springbatch.domain.entities;
 
 import lombok.Data;
 
@@ -8,9 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
-@Entity
+@Entity(name = "credit_card")
 @Data
-public class CreditCard {
+public class CreditCardEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

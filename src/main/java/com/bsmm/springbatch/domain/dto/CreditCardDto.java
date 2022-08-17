@@ -1,4 +1,4 @@
-package com.bsmm.springbatch.domain;
+package com.bsmm.springbatch.domain.dto;
 
 import lombok.Data;
 

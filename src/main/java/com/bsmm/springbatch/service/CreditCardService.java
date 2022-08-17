@@ -1,6 +1,6 @@
 package com.bsmm.springbatch.service;
 
-import com.bsmm.springbatch.domain.CreditCardDto;
+import com.bsmm.springbatch.domain.dto.CreditCardDto;
 
 import java.util.List;
 

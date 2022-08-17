@@ -7,8 +7,8 @@ import com.bsmm.springbatch.batch.listener.CreditCardIItemReaderListener;
 import com.bsmm.springbatch.batch.listener.CreditCardIItemWriterListener;
 import com.bsmm.springbatch.batch.listener.CreditCardItemProcessListener;
 import com.bsmm.springbatch.batch.listener.CreditCardJobExecutionListener;
-import com.bsmm.springbatch.domain.CreditCard;
-import com.bsmm.springbatch.domain.CreditCardRisk;
+import com.bsmm.springbatch.domain.entities.CreditCardEntity;
+import com.bsmm.springbatch.domain.entities.CreditCardRiskEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
@@ -82,7 +82,7 @@ public class JobBatchConfiguration {
                      CreditCardIItemWriterListener writerListener) {
 
         return stepBuilderFactory.get("step1")
-                .<CreditCard, CreditCardRisk>chunk(5)
+                .<CreditCardEntity, CreditCardRiskEntity>chunk(5)
                 .reader(reader)
                 .processor(processor)
                 .writer(writer)
@@ -91,5 +91,4 @@ public class JobBatchConfiguration {
                 .listener(writerListener)
                 .build();
     }
-
 }

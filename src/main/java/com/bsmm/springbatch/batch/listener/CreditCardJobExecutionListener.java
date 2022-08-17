@@ -1,23 +1,20 @@
 package com.bsmm.springbatch.batch.listener;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.stereotype.Component;
 
 @Component
+@Slf4j
 public class CreditCardJobExecutionListener implements JobExecutionListener {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(CreditCardJobExecutionListener.class);
-
     @Override
     public void beforeJob(JobExecution jobExecution) {
-        LOGGER.info("beforeJob");
+        log.info("beforeJob");
     }
 
     @Override
     public void afterJob(JobExecution jobExecution) {
-        LOGGER.info("afterJob: " + jobExecution.getStatus());
+        log.info("afterJob: " + jobExecution.getStatus());
     }
 }
